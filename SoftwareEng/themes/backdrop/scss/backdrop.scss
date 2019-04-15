@@ -1,0 +1,412 @@
+@import "charterfont";
+@import "font-awesome";
+  
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+$footer-height: rem-calc(300);
+
+.article p img {
+    float: left;
+    margin: 5px;
+    border: solid 4px #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+#link-image img {
+    max-height: 33%;
+}
+
+.about-me {
+    padding-bottom: rem-calc(20);
+    overflow: hidden;
+    
+    h5 {
+        margin-top: 0;
+    }
+}
+
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top: rem-calc(-32767);/* thank you Erik J - negate effect of float*/
+}
+
+footer {
+    @include grid-row();
+    border-top: rem-calc(4) solid $topbar-bg-color;
+    background: $silver;
+    min-width: 100%;
+    
+    p {
+        margin-bottom: rem-calc(10);
+    }
+    
+    hr {
+        margin-top: 0;
+        margin-bottom: rem-calc(10);
+    }
+    
+    .tag-cloud {
+        margin-top: rem-calc(21);
+        margin-bottom: rem-calc(20);
+    }
+}
+
+.sub-footer p {
+    font-size: 80%;
+    font-family: $font-family-sans-serif;
+    color: $monsoon;
+}
+
+.master-row {
+    @include grid-row();
+    max-width: none;
+
+    .content-pane {
+        @include grid-column($columns:12,$collapse:true);
+        @media #{$large-up} {
+            @include grid-column($columns:8,$collapse:true);
+            min-height: 100%;
+        }
+        z-index: 10;
+        box-shadow: 0 0 rem-calc(10) rem-calc(2) #333333;
+        position:relative;
+        
+        .row {
+            margin-right: 0;
+            min-width: 75%;
+        }
+    }
+    
+    .image-pane {
+        @include grid-column($columns:12,$collapse:true);
+        z-index: 1;
+        box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.15);
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        padding-top: rem-calc(18);
+        padding-bottom: rem-calc(18);
+
+        * {
+            color: $white;
+        }
+        
+        form {
+            color:  $body-font-color;
+        }
+        
+        div, span, a, p {
+            font-size: 0.9rem;
+        }
+        
+        i {
+            color: inherit;
+        }
+        
+        $about-me-anchor-font-color: $silver;
+        a {
+            color: $about-me-anchor-font-color
+        }
+        a:active, a:hover {
+            color: scale-color($about-me-anchor-font-color, $lightness: -14%);
+        }
+        
+        @media #{$large-up} {
+            @include grid-column($columns:4,$collapse:true);
+            min-height: auto;
+            position: fixed;
+            padding-left: rem-calc(5);
+            right: 0;
+            height: 100%;
+            .row {
+                max-width: rem-calc(530);
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+/*
+@media #{$large-up} {
+    .master-row {
+        height: 100%;
+    }
+    .content-pane {
+        height: 100%;
+    }
+    #content1 {
+        min-height: 100%;
+        margin-bottom: -206px;
+    }
+    #content1:after {
+        content: "";
+        display: block;
+    }
+    #foot, #content1:after {
+        height:206px;
+    }
+}
+*/
+
+.title-bar {
+    h1 {
+        font-size: rem-calc(50);
+        display: inline-block;
+        margin-right: rem-calc(20);
+        margin-bottom: 0;
+    }
+    h2 {
+        line-height: 0.8;
+        display: inline-block;
+        margin-bottom: 0;
+        margin-top: rem-calc(-10);
+    }
+    @media #{$medium-up} {
+      h1 { font-size: rem-calc(60); }
+    }
+
+    hr {
+        margin-top: rem-calc(10);
+        margin-bottom: rem-calc(10);
+    }
+    $title-link-color: $body-font-color;
+    a {
+        color: $title-link-color;
+    }
+    a:hover, a:focus {
+        color: scale-color($title-link-color, $lightness: 30%);
+    }
+    a:active {
+        color: scale-color($title-link-color, $lightness: 30%);
+    }
+}
+
+/*
+nav.top-bar {
+// If you want menu-items to be centred
+    text-align:center;
+
+}
+*/
+@media #{$medium-up}{
+/*
+// If you want menu-items to be centred
+    section.top-bar-section {
+        display: inline-block;
+    }
+*/
+
+    .top-bar li.active:after {
+        position: relative;
+        display: block;
+        bottom: rem-calc(5);
+        width: 0;
+        height: 0;
+        left: 50%;
+        margin-left: rem-calc(-7);
+        margin-bottom: rem-calc(-7);
+        vertical-align: middle;
+        content: " ";
+        border-right: rem-calc(7) solid transparent;
+        border-bottom: rem-calc(7) solid $ghost;
+        border-left: rem-calc(7) solid transparent;
+    }
+}
+
+div.transparent {
+    background-color:rgba(242,242,242,0.6);
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+table.transparent {
+    background-color:rgba(255,255,255,0.6);
+    margin-left: auto;
+    margin-right: auto;
+    thead, tr:nth-child(even) {
+        background-color:rgba(249,249,249,0.6);    
+    }
+}
+
+.no-buffer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.left-nav {  
+    @include side-nav;
+    li {
+        margin: 0;
+        text-align: right;
+    }
+}
+
+.right-nav {
+    @include side-nav;
+    li {
+        margin: 0;
+        text-align: left;
+    }
+}
+
+.copyright {
+    position: absolute;
+    bottom: 0;
+    p {
+        font-size: 80%;
+    }
+    hr {
+        margin-top: rem-calc(10);
+        margin-bottom: rem-calc(10);
+    }
+}
+
+.blogroll {
+    @include side-nav;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: rem-calc(20);
+    @media #{$medium-only} {
+        margin-left: initial;
+        margin-right: initial;
+    }
+    
+    li {
+        margin-bottom: 0;
+        a:not(.botton) {
+            padding-top: rem-calc(3);
+            padding-bottom: rem-calc(3);
+        }
+    }
+    
+    li.heading {
+        color: $charcoal;
+        padding-left: rem-calc(10);
+        padding-right: rem-calc(10);
+    }
+}
+
+.info-bar {
+    border-top: rem-calc(1) solid $silver;
+    border-bottom: rem-calc(1) solid $silver;
+    padding: rem-calc(8);
+    li {
+        font-size: 80%;
+    }
+    ul {
+        margin-bottom: rem-calc(2);
+    }
+}
+
+.small-articles {
+    font-size: 90%;
+}
+
+p.tag-page {
+    line-height: 1.9;
+}
+
+.summary {
+    pre {
+        display: none;
+    }
+    .th {
+        margin-bottom: rem-calc(20);
+    }
+}
+
+.article {
+    padding-bottom: rem-calc(5);
+}
+
+pre {
+    @include panel;
+}
+
+.highlight pre {
+    overflow-x: auto;
+    overflow-wrap: normal;
+    white-space: pre;
+}
+
+.inline-center {
+    list-style-type: none;
+    text-align: center;
+    margin-bottom: 0;
+    margin-left: 0;
+    
+    li {
+        display: inline-block;
+    }
+    
+    a:not(.button) {
+        padding-left: rem-calc(11);
+        padding-right: rem-calc(11);
+        padding-top: rem-calc(6);
+        padding-bottom: rem-calc(6);
+    }
+    
+    a:not(.button):hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+}
+
+.social-list {
+    margin-top: rem-calc(14);
+}
+
+
+.img-center {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+}
+
+@import "tipuesearch";

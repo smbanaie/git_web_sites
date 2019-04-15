@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="posts">
+
+<!-- {% block content_title %}
+<h2>All articles</h2>
+{% endblock %} -->
+
+{% for article in articles_page.object_list %}
+        <article>
+			<header> 
+			  {% if article.image is defined %}
+            <a href="{{ SITEURL }}/{{ article.url }}" class="image"><img src="{{ article.image }}"  alt="{{ article.title }}" height="260px"></a>
+			{% else  %}
+			<a href="#" class="image"><img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images//pic01.jpg" alt="" /></a>
+        {% endif %}
+				
+				<div class="info">
+                    <span class="date" datetime="{{ article.date.isoformat() }}"><span class="month">{{ article.date | strftime('%b')  }}</span> <span class="day">{{ article.date | strftime('%d')  }}</span> <span class="month"> {{ article.date | strftime('%Y')  }}</span></span>
+                    <!-- <ul class="stats">
+                                    <li><a href="#" class="icon fa-comment">16</a></li>
+                                    <li><a href="#" class="icon fa-heart">32</a></li>
+                                    <li><a href="#" class="icon fa-twitter">64</a></li>
+                                    <li><a href="#" class="icon fa-facebook">128</a></li>
+                    </ul> -->
+				</div>
+				<h3><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h3>
+			</header>
+			<p>{{article.headline}}</p>
+			<ul class="actions">
+				<li><a href="#" class="button">{{article.url}}</a></li>
+			</ul>
+
+             
+                
+             
+               
+        </article>
+{% endfor %}
+<!-- /#posts-list -->
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+</div><!-- /#posts -->
+{% endblock content %}
